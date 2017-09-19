@@ -1,0 +1,74 @@
+{{!< default}}
+{{! Top line inserts this template on main layout}}
+
+{{! Post template }}
+{{#post}}
+<main id="main" class="full-size-container">
+	<article id="post-page" class="{{post_class}}">
+
+		<header id="post-header" class="post-head archivo-bold">
+			<div class="post-meta-info">
+				<time class="post-date">{{date format="MMMM DD, YYYY"}}</time>
+
+				{{#if tags}}
+				<div class="post-tags">
+					{{tags separator=" "}}
+				</div>
+				{{/if}}
+			</div>
+
+			<h1 class="post-title">{{title}}</h1>
+		</header>
+
+		{{#if feature_image}}
+		<div class="post-cover">
+			<div class="background-cover" style="background-image:url({{img_url feature_image}})">
+				<div class="diffuser"></div>
+			</div>
+			<div class="center-cover" style="background-image:url({{img_url feature_image}})"></div>
+		</div>
+		{{/if}}
+
+		<section id="post-content" class="content-column">
+			{{content}}
+		</section>
+
+		<footer id="post-footer">
+
+			{{#get "posts" filter="featured:true" limit="3" as |featured|}}
+			<aside class="featured-posts">
+				<h4>Featured posts</h4>
+				{{#foreach featured}}
+				<article>
+					<h4 class="libre-bold"><a href="{{url}}">{{title}}</a></h4>
+					<p>{{excerpt words="38"}}...</p>
+				</article>
+				{{/foreach}}
+			</aside>
+			{{/get}}
+
+			<section id="comments-area-in-post" class="content-column">
+				<div id="disqus_thread"></div>
+				<script>
+				/**
+				*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+				*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+				var disqus_config = function () {
+				//this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+				this.page.identifier = "ghost-{{comment_id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+				};
+
+				(function() { // DON'T EDIT BELOW THIS LINE
+				var d = document, s = d.createElement('script');
+				s.src = 'https://beingfreelife.disqus.com/embed.js';
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+				})();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			</section>
+		</footer>
+	</article>
+</main>
+{{/post}}

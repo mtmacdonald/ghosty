@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>{{meta_title}}</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="{{asset 'favicon.png'}}">
+
+	{{! Styles}}
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{asset 'assets/css/personal.css'}}" />
+
+	{{! Ghost OUTPUT Data}}
+	{{ghost_head}}
+</head>
+<body class="{{body_class}}" data-ghost_url="{{@blog.url}}">
+
+	{{> header}}
+
+	{{{body}}}
+
+	{{> footer}}
+
+	{{! Ghost OUTPUT Data}}
+	{{ghost_foot}}
+
+	{{! Javascript }}
+
+</body>
+</html>
